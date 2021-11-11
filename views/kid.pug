@@ -1,18 +1,40 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   p  
+//-   //- - let items = results
+//-   - var items = [{"age":8,"nationality":"American","blood_group":"O+"},{"age":9,"nationality":"Indian","blood_group":"B+"},{"age":6,"nationality":"American","blood_group":"B+"}]
+//-   div(class="container-fuild")
+//-     div(class="row")
+//-       each result,index in results
+//-         div(class = "col-sm-2" id=index onclick=`age(${index})`) 
+//-           p #{result.age}
+//-           p #{result.nationality}
+//-           p #{result.blood_group}
+
+          
+//-   script.
+//-     function age(element){
+//-       alert(`Kid's position is ${element+1}.`)
+//-     }
+
 extends layout
 
 block content
-  h1= title
-  - var results = [{"age":8,"nationality":"American","blood_group":"O+"},{"age":9,"nationality":"Indian","blood_group":"B+"},{"age":6,"nationality":"American","blood_group":"B+"}]
-  div(class="container-fuild")
-    div(class="row")
-      each result,index in results
-        div(class = "col-sm-2" id=index onclick=`age(${index})`) 
-          p #{result.age}
-          p #{result.nationality}
-          p #{result.blood_group}
+  h1= title 
+  p Search results kid 
+  p 
+  - let items=[{"age":8,"nationality":"American","blood_group":"O+"},{"age":9,"nationality":"Indian","blood_group":"B+"},{"age":6,"nationality":"American","blood_group":"B+"}]
+    div(class="container-fluid")
+        div(class="row")
+            each v,index in items
+                div(class="col-sm-2" onclick=`age(${index})`) #{v.age}
+                div(class="col-sm-2" onclick=`age(${index})`) #{v.nationality}
+                div(class="col-sm-2" onclick=`age(${index})`) #{v.blood_group}
 
-          
-  script.
-    function age(element){
-      alert(`Kid's position is ${element+1}.`)
-    }
+  script.                
+        function age(intemNo)
+        {
+              alert(`you purchased Item ${intemNo+1}`)
+        }
