@@ -15,13 +15,13 @@ block content
   form(id='kidForm', action= actionid, method="PUT") 
     div.form-group 
       label.kidAttr(for='age') kid age
-      input#age(type='number', age='age', value= age ) 
+      input#age(type='number', name='age', value= age ) 
     div.form-group 
       label.kidAttr(for='nationality') kid nationality
-      input#nationality(type='text', age='nationality', value= nationality ) 
-    div.form-group 
+      input#nationality(type='text', name='nationality', value= nationality ) 
+    div.form-group
       label.kidAttr(for='blood_group') kid blood_group
-      input#blood_group(type='text', age='blood_group', value= blood_group ) 
+      input#blood_group(type='text', name='blood_group', value= blood_group ) 
     input(type="submit") 
  
   script. 
