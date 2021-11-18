@@ -8,12 +8,18 @@ block content
     div(class="container-fluid")
         div(class="row")
             each v,index in items
-                div(class="col-sm-2" onclick=`age(${index})`) #{v.age}
-                div(class="col-sm-2" onclick=`age(${index})`) #{v.nationality}
-                div(class="col-sm-2" onclick=`age(${index})`) #{v.blood_group}
+              div(class="card text-white bg-dark mb-3" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') #{o}
+                div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
+                div(class="col-sm-2" onclick=`age(${index})`) #{v.cost}
+                div(class="col-sm-2" onclick=`age(${index})`) #{v.model}
+                div(class="col-sm-2" onclick=`age(${index})`) #{v.memory}
+                a(href="kid/update/?id="+v.id) Update
+                a(href="kid/detail/?id="+v.id) View
+                a(href="kid/delete/?id="+v.id) Delete
+
 
   script.                
-        function age(intemNo)
+        function age(element)
         {
-              alert(`you purchased Item ${intemNo+1}`)
+              alert(`Kid's position is ${element+1}.`)
         }
