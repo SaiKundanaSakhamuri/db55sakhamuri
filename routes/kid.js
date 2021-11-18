@@ -13,4 +13,7 @@ router.get('/detail', kid_controllers.kid_view_one_Page);
 /* GET create kid page */
 router.get('/create', kid_controllers.kid_create_Page);
 
+/* GET create update page */
+router.get('/update', kid_controllers.kid_update_Page);
+
 module.exports = router;
