@@ -16,4 +16,7 @@ router.get('/create', kid_controllers.kid_create_Page);
 /* GET create update page */
 router.get('/update', kid_controllers.kid_update_Page);
 
+/* GET create kid page */
+router.get('/delete', kid_controllers.kid_delete_Page);
+
 module.exports = router;

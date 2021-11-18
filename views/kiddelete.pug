@@ -1,0 +1,53 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let kidid = toShow._id 
+    - let age= toShow.age
+    - let nationality = toShow.nationality
+    - let blood_group = toShow.blood_group
+    - let actionid = "/resource/kid/" + kidid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='kidAttr mr-3') kid ID is: 
+        div #{kidid} 
+      div.row 
+        div(class='kidAttr mr-3') kid Type is: 
+        div #{age} 
+      div.row 
+        div(class='kidAttr mr-3') kid Size is: 
+        div #{nationality} 
+      div.row 
+        div(class='kidAttr mr-3') kid Cost is: 
+        div #{blood_group} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home pblood_group for the kid collection 
+      window.location.href='/kid' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Do not need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/kids' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
