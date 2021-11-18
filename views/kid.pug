@@ -1,24 +1,3 @@
-//- extends layout
-
-//- block content
-//-   h1= title
-//-   p  
-//-   //- - let items = results
-//-   - var items = [{"age":8,"nationality":"American","blood_group":"O+"},{"age":9,"nationality":"Indian","blood_group":"B+"},{"age":6,"nationality":"American","blood_group":"B+"}]
-//-   div(class="container-fuild")
-//-     div(class="row")
-//-       each result,index in results
-//-         div(class = "col-sm-2" id=index onclick=`age(${index})`) 
-//-           p #{result.age}
-//-           p #{result.nationality}
-//-           p #{result.blood_group}
-
-          
-//-   script.
-//-     function age(element){
-//-       alert(`Kid's position is ${element+1}.`)
-//-     }
-
 extends layout
 
 block content

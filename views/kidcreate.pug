@@ -1,0 +1,34 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='kidForm', action="/resource/kids", method="POST") 
+    div.form-group 
+        label.kidAttr(for='age') kid type 
+        input#age(type='number', name='age') 
+    div.form-group 
+        label.kidAttr(for='nationality') kid nationality 
+        input#nationality(type='text', name='nationality') 
+    div.form-group 
+        label.kidAttr(for='blood_group') kid blood_group 
+        input#blood_group(type='text', name='blood_group') 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['kidForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    });

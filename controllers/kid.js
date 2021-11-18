@@ -46,9 +46,17 @@ exports.kid_create_post = async function(req, res) {
 }; 
  
  
-// Handle kid delete form on DELETE. 
-exports.kid_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: kid delete DELETE ' + req.params.id); 
+// Handle kid delete on DELETE. 
+exports.kid_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await kid.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 //  Handle kid update form on PUT. 
@@ -85,3 +93,29 @@ exports.kid_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
+   // Handle a show one view with id specified by query
+exports.kid_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await kid.findById( req.query.id)
+    res.render('kiddetail',
+    { title: 'kid Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    // Handle building the view for creating a kid.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.kid_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('kidcreate', { title: 'kid Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
