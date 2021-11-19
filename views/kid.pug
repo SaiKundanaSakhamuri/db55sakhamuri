@@ -6,16 +6,12 @@ block content
   p 
   - let items=[{"age":8,"nationality":"American","blood_group":"O+"},{"age":9,"nationality":"Indian","blood_group":"B+"},{"age":6,"nationality":"American","blood_group":"B+"}]
     div(class="container-fluid")
-        div(class="row")
+        div(class="row m-1")
             each v,index in items
-              div(class="card text-white bg-dark mb-4" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') #{o}
-                div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
-                div(class="col-sm-2" onclick=`age(${index})`) #{v.age}
-                div(class="col-sm-2" onclick=`age(${index})`) #{v.nationality}
-                div(class="col-sm-2" onclick=`age(${index})`) #{v.blood_group}
-                a(href="kid/update/?id="+v.id) Update
-                a(href="kid/detail/?id="+v.id) View
-                a(href="kid/delete/?id="+v.id) Delete
+              - let destination = `dispatch(\"/kid/update?id=${v._id}\")` 
+              div(class="card text-white bg-dark mb-4" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') Item #{v.nationality}(#{v.age}) is #{v.blood_group}
+                <br/>
+                button.btn( class="btn-primary ml-1", onclick= destination) Update 
 
 
   script.                
@@ -23,3 +19,7 @@ block content
         {
               alert(`Kid's position is ${element+1}.`)
         }
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
