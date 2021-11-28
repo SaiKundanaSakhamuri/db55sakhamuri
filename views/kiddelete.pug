@@ -17,13 +17,13 @@ block content
         div(class='kidAttr mr-3') kid ID is: 
         div #{kidid} 
       div.row 
-        div(class='kidAttr mr-3') kid Type is: 
+        div(class='kidAttr mr-3') kid age is: 
         div #{age} 
       div.row 
-        div(class='kidAttr mr-3') kid Size is: 
+        div(class='kidAttr mr-3') kid nationality is: 
         div #{nationality} 
       div.row 
-        div(class='kidAttr mr-3') kid Cost is: 
+        div(class='kidAttr mr-3') kid blood_group is: 
         div #{blood_group} 
  
     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
@@ -39,7 +39,7 @@ block content
       console.log("starting delete") 
       // delete first 
       fetch(actionid, { 
-        method: 'DELETE'      // Do not need a body for the delete 
+        method: 'DELETE'      // Dont need a body for the delete 
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 

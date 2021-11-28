@@ -2,10 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Hi from #{title}
-  button(type="button", class="btn btn-secondary", onclick="update()") Press Me 
+  p Welcome to #{title}
+  button(type="button", class="btn btn-secondary", onclick="update()") Press Me
   div(id="target") Display
-  a(Type="button", href="/kid") Link to Kid list
+  a(Type="button", href="/kid") Link to kid list
 
   script.
     let client_count = 0;
