@@ -2,15 +2,27 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome #{title}
   button(type="button", class="btn btn-secondary", onclick="update()") Press Me
+  <br>
+  <br>
+  
   div(id="target") Display
-  a(Type="button", href="/kid") Link to kid list
-
-  script.
+  
+  |
+  script. 
     let client_count = 0;
-    function update()
-    {
-      client_count = client_count+1;
-      document.getElementById("target").innerHTML ="Value now " + client_count;
-    };
+    function update() {
+      client_count = client_count + 1;
+      document.getElementById("target").innerHTML = `Value now ${client_count}`  ;
+      } 
+  
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/kid") Take me to kid 
+    br 
+    a(href="/logout") Logout

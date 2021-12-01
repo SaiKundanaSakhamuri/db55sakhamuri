@@ -2,23 +2,33 @@ extends layout
 
 block content
   h1= title
-  - let o;
-  - let items = results; 
   
+  p Search results kid  
+  p
+  - let items = results 
+    div(class="container-fluid") 
+    div(class="row m-1") 
+      each item in items  
+        - let destination = `dispatch(\"/kid/update?id=${item._id}\")` 
+         - let details = `dispatch(\"/kid/detail?id=${item._id}\")` 
+
+        div(class="row-sm-2", class="m-1") Item #{item.age}(#{item.nationality}) is #{item.blood_group} 
+          
+        <br><br>
+          
+            span(class="btn btn-info", onclick= details) Details
+            <br>
+            a(class="btn btn-danger", href="/kid/delete/?id="+item._id) Delete
+            <br>
+
+            button.btn( class="btn-success ml-1", onclick= destination) Update        
+   
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    }
+
   script.
     function age(element){
       alert(`Kid's position is ${element+1}.`)
-   } 
-  
-  div(class='container-fluid')
-    div(class='row m-1')
-      each item, index in items 
-        - let destination = `dispatch(\"/kid/update?id=${item._id}\")`
-        div(class="card text-white bg-dark mb-4" class='col' class='card' class='card-body' class='card-text' onclick='age('+index+')') Item #{item.nationality}(#{item.age}) is #{item.blood_group}
-          <br><br>
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
-
-  script.
-    function dispatch(path){
-      window.location.href=path
-    }
+   }  
